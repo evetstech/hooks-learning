@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Server } from 'miragejs';
+
+new Server({
+  routes() {
+    this.namespace = 'api'
+
+    this.get('/test', () => {
+      return {
+        data: {
+          random: 'stuff'
+        }
+      }
+    }, {timing: 2000});
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
